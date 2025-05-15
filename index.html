@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+<script>
+  // Check if we've been redirected from a 404
+  (function() {
+    var redirect = sessionStorage.getItem('gh_location');
+    if (redirect) {
+      sessionStorage.removeItem('gh_location');
+      // Get the pathname without the base path
+      var pathname = new URL(redirect).pathname;
+      var basePath = '/your-repository-name'; // Replace with your actual repository name
+      if (pathname.startsWith(basePath)) {
+        pathname = pathname.substr(basePath.length);
+      }
+      // Set a hash route that your router can handle
+      if (pathname && pathname !== '/index.html') {
+        window.location.hash = pathname;
+      }
+    }
+  })();
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>Email Resource Validator | Check Links and Images in Marketing Emails</title>
@@ -20,8 +39,9 @@
         CORS_PROXY: "https://corsproxy.io/?"
       };
     </script>
-    <script type="module" crossorigin src="index-C3tL7ciM.js"></script>
-    <link rel="stylesheet" crossorigin href="index-DJkVXyD7.css">
+
+    <script type="module" crossorigin src="./index-C3tL7ciM.js"></script>
+    <link rel="stylesheet" crossorigin href="./index-DJkVXyD7.css">
   </head>
   <body>
     <div id="root"></div>
